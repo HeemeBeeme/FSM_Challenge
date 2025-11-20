@@ -102,10 +102,11 @@ namespace FSM_Challenge
                     else return EnemyState.WalkingInLine;
 
                 case EnemyState.WalkingInLine:
-                    //TODO: move player in direction they previously moved.
-                    //HINT: there is a lastEnemyPos variable that tells you the previous position!
+                    Move(lastEnemyPos.Item1 - enemyPos.Item1, lastEnemyPos.Item2 - enemyPos.Item2);
 
-                    return EnemyState.Idle;
+                    if (rand < 0.2d) return EnemyState.Idle;
+                    else if (rand < 0.4d) return EnemyState.Shooting;
+                    else return EnemyState.WalkingInLine;
 
                 default:
                     return EnemyState.Idle; // this case should never happen
